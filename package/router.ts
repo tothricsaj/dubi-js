@@ -1,18 +1,14 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-async function router(url = '404') {
-  const routes: any = {
-    index: 'index',
-    test: 'test'
-  };
+import { RouterInput } from "./Interfaces/Router";
+
+async function router(url = '404', routes: RouterInput) {
 
   const route = url === '/' ? 'index' : url.substring(1);
-  const filePath = path.join(process.cwd(), `public/${routes[route]}.html`);
+  const filePath = path.join(process.cwd(), `public/${routes[route].url}.html`);
   
+  console.log('filePath ----->>>>>>>', filePath);
 
   try {
     const data = await fs.readFile(filePath);
