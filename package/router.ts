@@ -11,7 +11,8 @@ async function router(url = '404') {
   };
 
   const route = url === '/' ? 'index' : url.substring(1);
-  const filePath = path.join(__dirname,`../public/${routes[route]}.html`);
+  const filePath = path.join(process.cwd(), `public/${routes[route]}.html`);
+  
 
   try {
     const data = await fs.readFile(filePath);
