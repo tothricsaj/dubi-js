@@ -1,5 +1,5 @@
 export interface GetRequest {
-  url: string;
+  url?: string;
   action?: () => void;
 }
 
