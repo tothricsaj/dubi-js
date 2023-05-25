@@ -11,10 +11,11 @@ import { RouterInput } from "./Interfaces/Router";
 
 export function app(routes: RouterInput): http.Server {
   return http.createServer(async function (req, res) {
-    const dataTest = await router(req.url, routes);
 
-    console.log('app routes ---->>>>', routes);
+    console.log('path ----->>>> ', req.url === '/' ? 'home' : req.url?.substring(1));
     
+
+    const dataTest = await router(req.url, routes);
 
     res.write(dataTest);
 
