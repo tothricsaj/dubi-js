@@ -5,12 +5,13 @@ import { RouterInput } from "./Interfaces/Router";
 
 async function router(url = '404', routes: RouterInput) {
 
-  const route = url === '/' ? 'index' : url.substring(1);
-  const filePath = path.join(process.cwd(), `public/${routes[route].url}.html`);
-  
-  console.log('filePath ----->>>>>>>', filePath);
-
   try {
+    const route = url === '/' ? 'index' : url.substring(1);
+    const filePath = path.join(process.cwd(), `public/${routes.get.url}.html`);
+    
+    console.log('route ----->>>>>>', route);
+    
+    console.log('filePath ----->>>>>>>', filePath);
     const data = await fs.readFile(filePath);
 
     return data.toString();

@@ -13,6 +13,9 @@ export function app(routes: RouterInput): http.Server {
   return http.createServer(async function (req, res) {
     const dataTest = await router(req.url, routes);
 
+    console.log('app routes ---->>>>', routes);
+    
+
     res.write(dataTest);
 
     return res.end();
